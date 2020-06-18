@@ -140,7 +140,7 @@ namespace Jareds.ServiceProxy
             }
 
             var proxyAttr = (method.GetCustomAttribute(typeof(HttpProxyAttribute)) as HttpProxyAttribute);
-            if(proxyAttr == null)
+            if (proxyAttr == null)
             {
                 throw new Exception("服务未标注HttpProxy");
             }
@@ -164,8 +164,14 @@ namespace Jareds.ServiceProxy
                 {
                     il.Emit(OpCodes.Ldloc, dict);
                     il.Emit(OpCodes.Ldstr, parameterNames[i]);
-
-                    il.Emit(OpCodes.Ldarg_1);
+                    if (i == 0)
+                        il.Emit(OpCodes.Ldarg_1);
+                    else if (i == 1)
+                        il.Emit(OpCodes.Ldarg_2);
+                    else if (i == 2)
+                        il.Emit(OpCodes.Ldarg_3);
+                    else
+                        il.Emit(OpCodes.Ldarg_S, i + 1);
                     if (parameterTypes[i].IsValueType)
                     {
                         il.Emit(OpCodes.Box, parameterTypes[i]);
@@ -189,7 +195,7 @@ namespace Jareds.ServiceProxy
             var apiRequest = il.DeclareLocal(typeof(RestServiceBaseAccessor));
             var ins = RestServiceBaseAccessor.Resolver();
             Type typeofInterceptor = ins.GetType();
-            il.Emit(OpCodes.Newobj, typeofInterceptor.GetConstructor(new Type[0]));            
+            il.Emit(OpCodes.Newobj, typeofInterceptor.GetConstructor(new Type[0]));
             il.Emit(OpCodes.Stloc, apiRequest);
             il.Emit(OpCodes.Ldloc, apiRequest);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Jareds.ServiceModel;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Jareds.ServiceModel;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,14 +12,9 @@ namespace Jareds.ServiceProxy
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddRestService<T>(this IServiceCollection services) where T : class, IServiceDiscovery
+        public static void UseRestService(this IApplicationBuilder app)
         {
-            services.AddSingleton<IServiceDiscovery, T>();
-            RestService.ServiceProvider = services.BuildServiceProvider();
-        }
-        public static void AddRestService(this IServiceProvider isp)
-        {
-            RestService.ServiceProvider = isp;
+            RestService.ServiceProvider = app.ApplicationServices;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jareds.ServiceModel;
+using System;
 
 namespace Jareds.ServiceProxy
 {
