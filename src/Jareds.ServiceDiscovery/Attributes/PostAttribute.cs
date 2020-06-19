@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Jareds.ServiceProxy
+namespace Jareds.ServiceModel
 {
     public class PostAttribute : HttpProxyAttribute
     {

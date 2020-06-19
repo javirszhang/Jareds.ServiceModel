@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace Jareds.ServiceProxy
+namespace Jareds.ServiceModel
 {
     public class PatchAttribute : HttpProxyAttribute
     {
