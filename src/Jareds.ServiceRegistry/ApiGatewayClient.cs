@@ -12,7 +12,7 @@ namespace Jareds.ServiceRegistry
         public void OnStart(ServiceRegistration registration)
         {
             var json = JsonConvert.SerializeObject(registration);
-            SendRequest(registration.ServiceCenter.Host, "api/regitry", json);
+            SendRequest(registration.ServiceCenter.Host, "api/registry", json);
         }
 
         public void OnStop(ServiceRegistration registration)
