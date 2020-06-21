@@ -32,7 +32,8 @@ namespace Jareds.ServiceRegistry
                     message.Content = new StringContent(json, Encoding.UTF8, "application/json");
                     message.Method = HttpMethod.Post;
                 }
-                client.SendAsync(message);
+                var response = client.SendAsync(message).Result;
+                Console.WriteLine($"request {uri.OriginalString}, response :{response.StatusCode}");
             };
         }
     }

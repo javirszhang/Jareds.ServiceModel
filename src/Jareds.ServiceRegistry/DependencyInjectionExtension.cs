@@ -11,18 +11,18 @@ namespace Jareds.ServiceRegistry
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddServiceRegistry(IServiceCollection services, ServiceRegistration registration, IServiceCenter client)
+        public static void AddServiceRegistry(this IServiceCollection services, ServiceRegistration registration, IServiceCenter client)
         {
             var reg = ServiceRegisterProvider.GetServices(registration);
             services.AddSingleton<IServiceCenter>(sp => client);
             services.AddSingleton<ServiceRegistration>(sp => registration);
             services.AddHostedService<RegisterHostedService>();
         }
-        public static void AddServiceRegistry(IServiceCollection services, ServiceRegistration registration)
+        public static void AddServiceRegistry(this IServiceCollection services, ServiceRegistration registration)
         {
             AddServiceRegistry(services, registration, new ApiGatewayClient());
         }
-        public static void AddServiceRegistry(IServiceCollection services, IConfiguration configuration)
+        public static void AddServiceRegistry(this IServiceCollection services, IConfiguration configuration)
         {
             var registration = new ServiceRegistration();
             configuration.GetSection("serviceRegistry").Bind(registration);

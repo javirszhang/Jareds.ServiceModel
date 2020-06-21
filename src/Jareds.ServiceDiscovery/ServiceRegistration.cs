@@ -9,7 +9,6 @@ namespace Jareds.ServiceModel
         public string Id { get; set; }
         public string Name { get; set; }
         public string Host { get; set; }
-        public uint Port { get; set; }
         public ServiceCheck Check { get; set; }
         public ServiceCenter ServiceCenter { get; set; }
         public List<ServiceProxypass> Proxypass { get; set; }
