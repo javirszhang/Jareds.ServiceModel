@@ -13,6 +13,18 @@ namespace Jareds.ServiceProxy
 {
     internal class WebApiRequest
     {
+        private static HttpClient httpClient;
+        internal static void InitializeHttpClient(HttpMessageHandler handler)
+        {
+            if (httpClient == null)
+            {
+                httpClient = handler == null ? new HttpClient() : new HttpClient(handler);
+            }
+        }
+        internal static void InitializeHttpClient(HttpClient client)
+        {
+            httpClient = client;
+        }
         public T SendRequest<T>(string url, string httpMethod, object data)
         {
             var apiUrl = GetApiUrl(url, httpMethod, data, out IDictionary<string, object> dict);
@@ -50,17 +62,22 @@ namespace Jareds.ServiceProxy
                 }
             }
             var result = SendRequestAsync(httpMessage).Result;
+            if (string.IsNullOrEmpty(result))
+            {
+                return default;
+            }
             return JsonConvert.DeserializeObject<T>(result);
 
         }
-
         private async Task<string> SendRequestAsync(HttpRequestMessage message)
         {
-            using (var client = new HttpClient())
+            InitializeHttpClient((HttpMessageHandler)null);
+            var response = await httpClient.SendAsync(message);
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                var response = await client.SendAsync(message);
                 return await response.Content.ReadAsStringAsync();
             }
+            return await Task.FromResult((string)null);
         }
         private static string GetApiUrl(string apiUrl, string method, object data, out IDictionary<string, object> dict)
         {

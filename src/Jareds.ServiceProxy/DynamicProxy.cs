@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Text;
-using Winner.Framework.Encrypt;
 
 namespace Jareds.ServiceProxy
 {
@@ -216,12 +216,23 @@ namespace Jareds.ServiceProxy
         public static T CreateInstance<T>(string host)
         {
             Type typeOfT = typeof(T);
-            string hash = MD5Provider.Encode(typeOfT.Namespace + host);
+            string hash = Md5(typeOfT.Namespace + host);
             var dp = proxys.GetOrAdd(hash, ns =>
             {
                 return new DynamicProxy(ns, host);
             });
             return dp.CreateProxyInstance<T>();
+        }
+
+        private static string Md5(string source)
+        {
+            byte[] buffer = new MD5CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes(source));
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                builder.AppendFormat("{0:x2}", buffer[i]);
+            }
+            return builder.ToString();
         }
     }
 }

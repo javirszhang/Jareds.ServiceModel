@@ -8,12 +8,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
-    <PackageReference Include="Winner.Framework.Utils" Version="3.0.19" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jareds.ServiceDiscovery\Jareds.ServiceModel.csproj" />
+    <ProjectReference Include="..\Jareds.ServiceModel\Jareds.ServiceModel.csproj" />
   </ItemGroup>
 
 </Project>

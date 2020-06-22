@@ -1,12 +1,4 @@
-﻿using Jareds.ServiceModel;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using Microsoft.AspNetCore.Builder;
 
 namespace Jareds.ServiceProxy
 {

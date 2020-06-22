@@ -1,10 +1,7 @@
 ﻿using Jareds.ServiceModel;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.Text;
-using Winner.Framework.Utils;
 
 namespace Jareds.ServiceProxy
 {
@@ -19,31 +16,9 @@ namespace Jareds.ServiceProxy
             }
             if (discovery == null)
             {
-                //discovery = new DefaultServiceDiscovery();
-                throw new InvalidOperationException("dependency container does not contain IServiceDiscovry implemention");
+                throw new InvalidOperationException("dependency container does not contain IServiceDiscovery implemention");
             }
             return discovery.GetHost();
         }
     }
-    /*
-    public class DefaultServiceDiscovery : IServiceDiscovery
-    {
-        private readonly GatewaySetting setting;
-        public DefaultServiceDiscovery(IOptions<GatewaySetting> options)
-        {
-            this.setting = options.Value;
-        }
-        public string GetHost()
-        {            ;
-            string host = "";
-            string url = $"{host}/api/discovery/{name}";
-            WebApiRequest request = new WebApiRequest();
-            return request.SendRequest<string>(url, "GET", null);
-        }
-    }
-    public class GatewaySetting
-    {
-        public string Host { get; set; }
-    }
-    */
 }

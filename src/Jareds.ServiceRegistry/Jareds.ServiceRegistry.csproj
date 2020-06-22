@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jareds.ServiceDiscovery\Jareds.ServiceModel.csproj" />
+    <ProjectReference Include="..\Jareds.ServiceModel\Jareds.ServiceModel.csproj" />
   </ItemGroup>
 
 </Project>
