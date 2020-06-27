@@ -6,7 +6,7 @@
     <Authors>Jason</Authors>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(Platform)'=='AnyCPU'">
     <DocumentationFile>Jareds.ServiceModel.xml</DocumentationFile>
   </PropertyGroup>
 
