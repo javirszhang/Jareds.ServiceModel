@@ -52,5 +52,105 @@
             数据集合
             </summary>
         </member>
+        <member name="T:Jareds.ServiceModel.ServiceRegistration">
+            <summary>
+            服务注册
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.AppId">
+            <summary>
+            应用Id
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.NodeId">
+            <summary>
+            节点ID
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.Name">
+            <summary>
+            服务名称
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.Host">
+            <summary>
+            节点uri.host
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.Check">
+            <summary>
+            健康检查配置
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.ServiceCenter">
+            <summary>
+            网关服务中心
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceRegistration.Proxypass">
+            <summary>
+            代理服务
+            </summary>
+        </member>
+        <member name="T:Jareds.ServiceModel.ServiceCheck">
+            <summary>
+            健康检查配置
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCheck.DeregisterAfter">
+            <summary>
+            反注册时间
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCheck.Interval">
+            <summary>
+            间隔
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCheck.Url">
+            <summary>
+            健康检查url地址
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCheck.Timeout">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="T:Jareds.ServiceModel.ServiceProxypass">
+            <summary>
+            代理服务
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceProxypass.Id">
+            <summary>
+            唯一id
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceProxypass.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceProxypass.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:Jareds.ServiceModel.ServiceCenter">
+            <summary>
+            网关服务中心
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCenter.Host">
+            <summary>
+            网关主机
+            </summary>
+        </member>
+        <member name="P:Jareds.ServiceModel.ServiceCenter.Name">
+            <summary>
+            网关名称
+            </summary>
+        </member>
     </members>
 </doc>

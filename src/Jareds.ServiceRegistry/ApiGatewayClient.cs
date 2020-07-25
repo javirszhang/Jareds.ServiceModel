@@ -17,7 +17,7 @@ namespace Jareds.ServiceRegistry
 
         public void OnStop(ServiceRegistration registration)
         {
-            SendRequest(registration.ServiceCenter.Host, $"api/registry/{registration.Name}/unavailable", null);
+            SendRequest(registration.ServiceCenter.Host, $"api/registry/{registration.NodeId}/unavailable", null);
         }
         private void SendRequest(string host, string path, string json)
         {

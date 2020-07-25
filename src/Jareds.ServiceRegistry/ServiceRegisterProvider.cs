@@ -25,7 +25,11 @@ namespace Jareds.ServiceRegistry
                 var methods = t.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.InvokeMethod);
                 foreach (var m in methods)
                 {
-
+                    var ppAttr = m.GetCustomAttribute(typeof(ProxypassAttribute)) as ProxypassAttribute;
+                    if (ppAttr != null && ppAttr.Ignore)
+                    {
+                        continue;
+                    }
                     if (m.IsDefined(typeof(NonActionAttribute)))
                     {
                         continue;
@@ -45,10 +49,8 @@ namespace Jareds.ServiceRegistry
                     {
                         path += $"/{hmAttr.Template}";
                     }
-                    path = Regex.Replace(path, @"^(.+?)(\[.+\])(.*)$", $"$1{t.Name.ToLower().Replace("controller", "")}$3");
+                    path = path.Replace("[controller]", t.Name.ToLower().Replace("controller", "")).Replace("[action]", m.Name.ToLower());
                     string httpMethod = string.Join(",", hmAttr.HttpMethods).ToLower();
-
-                    var ppAttr = m.GetCustomAttribute(typeof(ProxypassAttribute)) as ProxypassAttribute;
 
                     string name = ppAttr?.Name ?? string.Concat(path.Replace("{", "").Replace("}", "").Replace("?", "").Replace("[", "").Replace("]", ""), ".", httpMethod);
                     string id = ppAttr?.ProxyCode ?? name;
